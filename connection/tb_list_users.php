@@ -1,4 +1,5 @@
-<?php require_once('connection.php');?>
+<?php require_once('connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,18 +13,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
     <style>
-        body{
-            font-family: 'Khmer S1';
-        }
-        tr td:hover{
-            color: red;
+        tr:hover{
+            font-weight: bold;            
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h2 class="text-center text-danger">List Users</h2>
-        <table class="table table-dark table-hover">
+        <table class="table table-white table-hover">
             <thead>
                 <tr class="bg-info text-danger">
                     <th>ID</th>
@@ -37,7 +35,7 @@
             <tbody>
                 <?php
                     try {                    
-                        $stmt = $conn->prepare("SELECT user_id, first_name, last_name, email, password, img FROM tb_list");
+                        $stmt = $conn->prepare("SELECT user_id, first_name, last_name, email, password FROM tb_list");
                         $stmt->execute();
                         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
                         foreach ($stmt->fetchAll() as $row){
@@ -46,9 +44,9 @@
                         <td><?php echo $row['user_id']; ?></td>
                         <td><?php echo $row['first_name']; ?></td>
                         <td><?php echo $row['last_name']; ?></td>
-                        <td><?php echo $row['email']; ?></td>
+                        <td><a href="#"><?php echo $row['email']; ?></a></td>
                         <td><?php echo $row['password']; ?></td>
-                        <td><?php echo $row['img']; ?></td>
+                        
                     </tr>
                 <?php
                         }
