@@ -1,0 +1,4 @@
+hostname : Localhost
+Username : root
+password :
+Dbname : dbtesting
